@@ -1,0 +1,1 @@
+# frontowcy-LibraryManager-front
