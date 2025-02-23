@@ -6,11 +6,14 @@ const { Header, Content, Footer } = Layout;
 import './Dashboard.scss';
 import { useEffect } from 'react';
 import { UserAvatar } from '../../components/UserAvatar/UserAvatar.tsx';
+import { useAuthTest } from '../../hooks/useAuthTest.ts';
 export const Dashboard = () => {
   const { token } = theme.useToken();
   const navigate = useNavigate();
 
   const location = useLocation();
+
+  useAuthTest();
 
   useEffect(() => {
     const body = document.body;
@@ -30,8 +33,8 @@ export const Dashboard = () => {
           defaultSelectedKeys={[`${location.pathname.split('/')[1]}`]}
           className={'menu'}
         >
-          <Menu.Item key='register' onClick={() => navigate('/register')}>
-            Rejestracja
+          <Menu.Item key='books' onClick={() => navigate('/books')}>
+            Lista Książek
           </Menu.Item>
         </Menu>
 

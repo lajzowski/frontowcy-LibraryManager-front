@@ -1,0 +1,39 @@
+.book-container {
+  display: flex;
+  justify-content: space-between;
+}
+.description {
+  max-width: 500px;
+}
+
+
+.button-rent-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .button-rent {
+    width: 200px;
+    height: 50px;
+
+  }
+
+}
+
+
+
+.book-description {
+  margin-top: 50px;
+}
+
+.text-button-rent-description {
+  padding: 5px;
+}
+
+.modal-content {
+  p {
+    padding: 15px;
+  }
+}

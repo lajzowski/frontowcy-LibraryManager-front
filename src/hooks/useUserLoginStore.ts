@@ -1,12 +1,12 @@
 import { create } from 'zustand/react';
 import { persist } from 'zustand/middleware';
-import { UserI } from '../types/user.interface.ts';
+import { UserInterface } from '../types/user.interface.ts';
 
 interface Store {
   accessKey: string | null;
   setAccessKey: (accessKey: string) => void;
-  user: UserI | null;
-  setUser: (user: UserI) => void;
+  user: UserInterface | null;
+  setUser: (user: UserInterface) => void;
   clear: () => void;
 }
 

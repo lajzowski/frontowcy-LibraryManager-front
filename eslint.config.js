@@ -25,6 +25,36 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+
+      /*      // Group imports to enforce order
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin', // Node.js built-ins
+            'external', // External packages installed with npm
+            'internal', // Internal modules
+            ['parent', 'sibling', 'index'], // Parent, sibling, and index files
+            'object', // For additional groupings
+            'type', // Flow or TypeScript types
+            'unknown', // Any unknown grouping
+            'style', // CSS/SCSS imports
+          ],
+          pathGroups: [
+            {
+              pattern: '*.css',
+              group: 'style',
+              position: 'after',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['type'],
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+          'newlines-between': 'always',
+        },
+      ],*/
     },
   },
   {
