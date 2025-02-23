@@ -1,13 +1,15 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
+import { useUserLoginStore } from './useUserLoginStore';
 import { myConfig } from '../../config.ts';
-import { useUserLoginStore } from './useUserLoginStore.ts';
 
 export const useGetQuery = <T>(
   queryKey: string,
   relation?: 'categories' | 'equipments' | 'orders',
-  sortBy?: string
+  sortBy?: string,
+  options: { enabled?: boolean } = {} // Dodajemy opcję `enabled`
 ): UseQueryResult<T> => {
   const { accessKey } = useUserLoginStore.getState();
+
   return useQuery<T>({
     queryKey: queryKey.includes('/') ? queryKey.split('/') : [queryKey],
     queryFn: async () => {
@@ -20,7 +22,11 @@ export const useGetQuery = <T>(
           },
         }
       );
+
+      if (!data.ok) throw new Error(String(data.status));
+
       return data.json();
     },
+    ...options, // Nadpisujemy opcje, w tym np. `enabled`
   });
 };
