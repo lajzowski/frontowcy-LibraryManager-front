@@ -9,14 +9,14 @@ import { useEffect, useState } from 'react';
 
 import './Books.scss';
 export const Books = () => {
-  const { data, isSuccess } = useGetQuery<BookInterface[]>('books');
+  const { data, isLoading } = useGetQuery<BookInterface[]>('books');
   const [filteredData, setFilteredData] = useState<
     BookInterface[] | undefined
   >();
 
   useEffect(() => {
     setFilteredData(data);
-  }, [isSuccess]);
+  }, [data]);
 
   const handleSearch = (value: string) => {
     const lowerCaseValue = value.toLowerCase();
@@ -66,6 +66,7 @@ export const Books = () => {
         />
       </div>
       <Table
+        loading={isLoading}
         dataSource={filteredData}
         rowKey={'id'}
         columns={columns}

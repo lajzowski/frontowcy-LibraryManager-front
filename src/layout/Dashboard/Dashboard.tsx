@@ -36,6 +36,10 @@ export const Dashboard = () => {
           <Menu.Item key='books' onClick={() => navigate('/books')}>
             Lista Książek
           </Menu.Item>
+
+          <Menu.Item key='rents' onClick={() => navigate('/rents')}>
+            Moje wypożyczenia
+          </Menu.Item>
         </Menu>
 
         <UserAvatar />

@@ -8,6 +8,7 @@ import { Login } from './components/Login/Login.tsx';
 import { Logout } from './components/Logout/Logout.tsx';
 import { Books } from './components/Books/Books.tsx';
 import { BookOne } from './components/Books/BookOne.tsx';
+import { RentsHistory } from './components/RentsHistory/RentsHistory.tsx';
 
 const systemPrefersDark = window.matchMedia(
   '(prefers-color-scheme: dark)'
@@ -35,6 +36,8 @@ export const Router = () => {
 
           <Route path={'books'} element={<Books />} />
           <Route path={'books/:slug'} element={<BookOne />} />
+
+          <Route path={'rents'} element={<RentsHistory />} />
         </Route>
       </Routes>
     </ConfigProvider>
