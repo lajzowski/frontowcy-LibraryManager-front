@@ -1,21 +1,23 @@
 import { Content } from '../../layout/Content/Content.tsx';
 import { Button, Flex, Form, Input } from 'antd';
-import { RegistrationI } from '../../types/registration.interface.ts';
+import { RegistrationInterface } from '../../types/registration.interface.ts';
 import { useForm } from 'antd/es/form/Form';
 import { useCreateMutation } from '../../hooks/useCreateMutation.ts';
 import { useState } from 'react';
-import { UserI } from '../../types/user.interface.ts';
+import { UserInterface } from '../../types/user.interface.ts';
 import { RegCompleted } from './RegCompleted.tsx';
 
 export const Registration = () => {
-  const [form] = useForm<RegistrationI>();
-  const { mutate } = useCreateMutation<UserI, RegistrationI, never>(
-    'user/register'
-  );
+  const [form] = useForm<RegistrationInterface>();
+  const { mutate } = useCreateMutation<
+    UserInterface,
+    RegistrationInterface,
+    never
+  >('user/register');
 
-  const [userData, setUserData] = useState<UserI>();
+  const [userData, setUserData] = useState<UserInterface>();
 
-  const onSubmit = (values: RegistrationI) => {
+  const onSubmit = (values: RegistrationInterface) => {
     mutate(values, {
       onSuccess: (user) => {
         form.resetFields();

@@ -1,8 +1,8 @@
-import { UserI } from '../../types/user.interface.ts';
+import { UserInterface } from '../../types/user.interface.ts';
 import { Link } from 'react-router';
 
 interface Props {
-  user: UserI;
+  user: UserInterface;
 }
 
 export const RegCompleted = ({ user }: Props) => {

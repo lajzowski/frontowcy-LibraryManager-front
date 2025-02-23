@@ -1,4 +1,4 @@
-export interface RegistrationI {
+export interface RegistrationInterface {
   firstname: string;
 
   lastname: string;

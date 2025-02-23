@@ -1,17 +1,17 @@
 import { Content } from '../../layout/Content/Content.tsx';
 import { Button, Flex, Form, Input } from 'antd';
 import { useForm } from 'antd/es/form/Form';
-import { LoginI } from '../../types/login.interface.ts';
+import { LoginInterface } from '../../types/login.interface.ts';
 import { useCreateMutation } from '../../hooks/useCreateMutation.ts';
 import { useUserLoginStore } from '../../hooks/useUserLoginStore.ts';
-import { UserI } from '../../types/user.interface.ts';
+import { UserInterface } from '../../types/user.interface.ts';
 
 import './Login.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export const Login = () => {
-  const [form] = useForm<LoginI>();
+  const [form] = useForm<LoginInterface>();
 
   const [error, setError] = useState<string>('');
 
@@ -20,12 +20,12 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const { mutate } = useCreateMutation<
-    { accessKey: string; user: UserI },
-    LoginI,
+    { accessKey: string; user: UserInterface },
+    LoginInterface,
     never
   >('auth/login');
 
-  const onSubmit = (values: LoginI) => {
+  const onSubmit = (values: LoginInterface) => {
     mutate(
       { ...values, cardNumber: Number(values.cardNumber) },
 

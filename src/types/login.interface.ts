@@ -1,4 +1,4 @@
-export interface LoginI {
+export interface LoginInterface {
   cardNumber: number;
   password: string;
 }
