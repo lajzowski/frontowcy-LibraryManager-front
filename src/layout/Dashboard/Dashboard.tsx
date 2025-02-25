@@ -44,6 +44,10 @@ export const Dashboard = () => {
           <Menu.Item key='admin-rents' onClick={() => navigate('/admin/rents')}>
             Lista Wynajmów
           </Menu.Item>
+
+          <Menu.Item key='admin-logs' onClick={() => navigate('/admin/logs')}>
+            Logi
+          </Menu.Item>
         </Menu>
 
         <UserAvatar />

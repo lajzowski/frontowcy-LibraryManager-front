@@ -30,9 +30,12 @@ export const RentsHistory = () => {
     {
       title: 'Tytuł Książki',
       key: 'bookTitle',
-      render: (_, record) => (
-        <Link to={`/books/${record.book.slug}`}>{record.book.title}</Link>
-      ),
+      render: (_, record) =>
+        record.book ? (
+          <Link to={`/books/${record.book.slug}`}>{record.book.title}</Link>
+        ) : (
+          'Książka usunięta'
+        ),
       sorter: (a, b) => myStringSorter(a.book.title, b.book.title),
     },
 
