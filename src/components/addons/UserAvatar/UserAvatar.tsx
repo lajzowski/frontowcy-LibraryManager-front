@@ -1,9 +1,9 @@
-import { useUserLoginStore } from '../../hooks/useUserLoginStore.ts';
+import { useUserLoginStore } from '../../../hooks/useUserLoginStore.ts';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import './UserAvatar.scss';
-import { useLogout } from '../../hooks/useLogout.ts';
+import { useLogout } from '../../../hooks/useLogout.ts';
 import { useNavigate } from 'react-router';
 
 export const UserAvatar = () => {
@@ -33,12 +33,16 @@ export const UserAvatar = () => {
           {user.firstname} {user.lastname}
         </p>
         <p className={'card'}>{user.cardNumber}</p>
+        <p className={'login-link'} onClick={() => navigate('/profile')}>
+          Profil
+        </p>
+
         <p className={'login-link'} onClick={logout}>
           Wyloguj
         </p>
       </div>
 
-      <Avatar shape='square' size={64} icon={<UserOutlined />} />
+      <Avatar shape='square' size={96} icon={<UserOutlined />} />
     </div>
   );
 };

@@ -5,7 +5,7 @@ const { Header, Content, Footer } = Layout;
 
 import './Dashboard.scss';
 import { useEffect } from 'react';
-import { UserAvatar } from '../../components/UserAvatar/UserAvatar.tsx';
+import { UserAvatar } from '../../components/addons/UserAvatar/UserAvatar.tsx';
 import { useAuthTest } from '../../hooks/useAuthTest.ts';
 export const Dashboard = () => {
   const { token } = theme.useToken();

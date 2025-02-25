@@ -1,0 +1,10 @@
+.profile-container {
+  display: flex;
+  p {
+    display: inline;
+  }
+  .remove-row {
+    display: flex;
+    justify-content: center;
+  }
+}
