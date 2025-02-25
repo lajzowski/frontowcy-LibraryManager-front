@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 
 import './Books.scss';
 import { ButtonAddBook } from '../adminComponents/ButtonAddBook/ButtonAddBook.tsx';
+import { ButtonEditBookSmall } from '../adminComponents/ButtonEditBookSmall/ButtonEditBookSmall.tsx';
+import { ButtonDeleteBookSmall } from '../adminComponents/ButtonDeleteBookSmall/ButtonDeleteBookSmall.tsx';
 export const Books = () => {
   const { data, isLoading } = useGetQuery<BookInterface[]>('books');
   const [filteredData, setFilteredData] = useState<
@@ -32,7 +34,13 @@ export const Books = () => {
       dataIndex: 'title',
       key: 'title',
       render: (_, record) => (
-        <Link to={`/books/${record.slug}`}>{record.title}</Link>
+        <div className={'book-title'}>
+          <Link to={`/books/${record.slug}`}>{record.title}</Link>
+          <div className={'book-buttons'}>
+            <ButtonEditBookSmall slug={record.slug} />
+            <ButtonDeleteBookSmall slug={record.slug} />
+          </div>
+        </div>
       ),
       sorter: (a, b) => myStringSorter(a.title, b.title),
     },
