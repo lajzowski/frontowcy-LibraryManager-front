@@ -8,6 +8,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 
 import './Books.scss';
+import { ButtonAddBook } from '../adminComponents/ButtonAddBook/ButtonAddBook.tsx';
 export const Books = () => {
   const { data, isLoading } = useGetQuery<BookInterface[]>('books');
   const [filteredData, setFilteredData] = useState<
@@ -66,6 +67,7 @@ export const Books = () => {
         />
       </div>
       <Table
+        title={() => <ButtonAddBook />}
         loading={isLoading}
         dataSource={filteredData}
         rowKey={'id'}

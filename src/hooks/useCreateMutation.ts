@@ -27,6 +27,11 @@ export const useCreateMutation = <
         },
       });
 
+      if (response.status === 400) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Bad Request');
+      }
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
