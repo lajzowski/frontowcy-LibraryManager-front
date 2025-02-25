@@ -11,4 +11,6 @@ export interface RentInterface {
   rentDate: Date;
 
   returnDate: Date | null;
+
+  cardNumber: number;
 }

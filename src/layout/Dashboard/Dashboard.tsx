@@ -40,6 +40,10 @@ export const Dashboard = () => {
           <Menu.Item key='rents' onClick={() => navigate('/rents')}>
             Moje wypożyczenia
           </Menu.Item>
+
+          <Menu.Item key='admin-rents' onClick={() => navigate('/admin/rents')}>
+            Lista Wynajmów
+          </Menu.Item>
         </Menu>
 
         <UserAvatar />

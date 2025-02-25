@@ -5,7 +5,7 @@ import { myStringSorter } from '../../extras/sorters.ts';
 import { RentInterface } from '../../types/rent.interface.ts';
 import { myDateFormat } from '../../extras/myDateFormat.ts';
 import { useGetQuery } from '../../hooks/useGetQuery.ts';
-import { ButtonReturnBook } from '../addons/ButtonReturnBook/ButtonRetrunBook.tsx';
+import { ButtonReturnBook } from '../addons/ButtonReturnBook/ButtonReturnBook.tsx';
 import useMessage from 'antd/es/message/useMessage';
 import { useMemo, useState } from 'react';
 
