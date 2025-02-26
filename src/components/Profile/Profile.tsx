@@ -38,7 +38,11 @@ export const Profile = () => {
       label: 'Rezygnacja',
       children: (
         <div className={'remove-row'}>
-          <ButtonRemoveAccount />
+          {user?.rule === 'a9' ? (
+            'Nie możesz usunąć konta administratora.'
+          ) : (
+            <ButtonRemoveAccount />
+          )}
         </div>
       ),
     },

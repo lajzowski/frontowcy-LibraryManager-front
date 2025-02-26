@@ -1,5 +1,5 @@
-import { Layout, Menu, theme } from 'antd';
-import { Outlet, useLocation, useNavigate } from 'react-router';
+import { Layout, theme } from 'antd';
+import { Outlet } from 'react-router';
 
 const { Header, Content, Footer } = Layout;
 
@@ -7,11 +7,9 @@ import './Dashboard.scss';
 import { useEffect } from 'react';
 import { UserAvatar } from '../../components/addons/UserAvatar/UserAvatar.tsx';
 import { useAuthTest } from '../../hooks/useAuthTest.ts';
+import { MyMenu } from '../MyMenu/MyMenu.tsx';
 export const Dashboard = () => {
   const { token } = theme.useToken();
-  const navigate = useNavigate();
-
-  const location = useLocation();
 
   useAuthTest();
 
@@ -27,33 +25,7 @@ export const Dashboard = () => {
     >
       <Header className={'header'}>
         <div className={'logo'}>Frontowcy Library Manager</div>
-
-        <Menu
-          mode='horizontal'
-          defaultSelectedKeys={[`${location.pathname.split('/')[1]}`]}
-          className={'menu'}
-        >
-          <Menu.Item key='books' onClick={() => navigate('/books')}>
-            Lista Książek
-          </Menu.Item>
-
-          <Menu.Item key='stats' onClick={() => navigate('/stats')}>
-            Statystyki
-          </Menu.Item>
-
-          <Menu.Item key='rents' onClick={() => navigate('/rents')}>
-            Moje wypożyczenia
-          </Menu.Item>
-
-          <Menu.Item key='admin-rents' onClick={() => navigate('/admin/rents')}>
-            Lista Wynajmów
-          </Menu.Item>
-
-          <Menu.Item key='admin-logs' onClick={() => navigate('/admin/logs')}>
-            Logi
-          </Menu.Item>
-        </Menu>
-
+        <MyMenu />
         <UserAvatar />
       </Header>
       <Content>

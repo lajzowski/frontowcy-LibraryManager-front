@@ -20,7 +20,10 @@ export const ButtonRemoveAccount = () => {
   const { user, clear } = useUserLoginStore();
   const [modalApi, holder] = useModal();
 
-  const { data, error } = useGetQuery<RentInterface[]>('rents');
+  const { data, error, isLoading } = useGetQuery<RentInterface[]>('rents');
+
+  if (isLoading) return <div>Loading...</div>;
+
   if (error?.message === '401') {
     return <>401</>;
   }
@@ -30,7 +33,7 @@ export const ButtonRemoveAccount = () => {
   }
 
   if (!data) {
-    return <>Loading...</>;
+    return <div>Loading...</div>;
   }
 
   const onConfirm = () => {

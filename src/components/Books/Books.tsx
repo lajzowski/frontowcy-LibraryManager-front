@@ -12,11 +12,13 @@ import { ButtonAddBook } from '../adminComponents/ButtonAddBook/ButtonAddBook.ts
 import { ButtonEditBookSmall } from '../adminComponents/ButtonEditBookSmall/ButtonEditBookSmall.tsx';
 import { ButtonDeleteBookSmall } from '../adminComponents/ButtonDeleteBookSmall/ButtonDeleteBookSmall.tsx';
 import { ButtonRent } from '../ButtonRent/ButtonRent.tsx';
+import { useUserLoginStore } from '../../hooks/useUserLoginStore.ts';
 export const Books = () => {
   const { data, isLoading } = useGetQuery<BookInterface[]>('books');
   const [filteredData, setFilteredData] = useState<
     BookInterface[] | undefined
   >();
+  const { user } = useUserLoginStore();
 
   useEffect(() => {
     setFilteredData(data);
@@ -35,9 +37,9 @@ export const Books = () => {
       dataIndex: 'title',
       key: 'title',
       render: (_, record) => (
-        <div className={'book-title'}>
+        <div className='book-title'>
           <Link to={`/books/${record.slug}`}>{record.title}</Link>
-          <div className={'book-buttons'}>
+          <div className='book-buttons'>
             <ButtonEditBookSmall slug={record.slug} />
             <ButtonDeleteBookSmall slug={record.slug} />
           </div>
@@ -45,32 +47,32 @@ export const Books = () => {
       ),
       sorter: (a, b) => myStringSorter(a.title, b.title),
     },
-
     {
       title: 'Autor',
       dataIndex: 'author',
       key: 'author',
-      sorter: (a, b) => myStringSorter(a.title, b.title),
+      sorter: (a, b) => myStringSorter(a.author, b.author),
     },
-
     {
       title: 'Dostępna ilość',
       dataIndex: 'count',
       key: 'count',
       width: 150,
     },
-
-    {
-      title: '',
-      key: 'action',
-      width: 150,
-      align: 'center',
-      render: (_, record) => (
-        <div>
-          <ButtonRent book={record} size={'small'} />
-        </div>
-      ),
-    },
+    ...(user?.rule === 'u0'
+      ? [
+          {
+            title: '',
+            key: 'action',
+            width: 150,
+            render: (_: undefined, record: BookInterface) => (
+              <div>
+                <ButtonRent book={record} size='small' />
+              </div>
+            ),
+          },
+        ]
+      : []),
   ];
 
   return (

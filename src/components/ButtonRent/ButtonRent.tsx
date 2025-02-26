@@ -73,6 +73,10 @@ export const ButtonRent = ({ book, size }: Params) => {
     );
   };
 
+  if (user?.rule === 'a9') {
+    return null;
+  }
+
   return (
     <>
       <Button
