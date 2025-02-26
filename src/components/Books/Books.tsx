@@ -11,6 +11,7 @@ import './Books.scss';
 import { ButtonAddBook } from '../adminComponents/ButtonAddBook/ButtonAddBook.tsx';
 import { ButtonEditBookSmall } from '../adminComponents/ButtonEditBookSmall/ButtonEditBookSmall.tsx';
 import { ButtonDeleteBookSmall } from '../adminComponents/ButtonDeleteBookSmall/ButtonDeleteBookSmall.tsx';
+import { ButtonRent } from '../ButtonRent/ButtonRent.tsx';
 export const Books = () => {
   const { data, isLoading } = useGetQuery<BookInterface[]>('books');
   const [filteredData, setFilteredData] = useState<
@@ -57,6 +58,18 @@ export const Books = () => {
       dataIndex: 'count',
       key: 'count',
       width: 150,
+    },
+
+    {
+      title: '',
+      key: 'action',
+      width: 150,
+      align: 'center',
+      render: (_, record) => (
+        <div>
+          <ButtonRent book={record} size={'small'} />
+        </div>
+      ),
     },
   ];
 

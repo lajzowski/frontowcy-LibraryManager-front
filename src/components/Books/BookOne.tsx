@@ -2,83 +2,22 @@ import { Content } from '../../layout/Content/Content.tsx';
 import { useParams } from 'react-router';
 import { useGetQuery } from '../../hooks/useGetQuery.ts';
 import { BookInterface } from '../../types/book.interface.ts';
-import { Badge, Button, Descriptions, DescriptionsProps, message } from 'antd';
+import { Badge, Descriptions, DescriptionsProps } from 'antd';
 
 import { useUserLoginStore } from '../../hooks/useUserLoginStore.ts';
-import useModal from 'antd/es/modal/useModal';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
-import moment from 'moment';
 import './BookOne.scss';
-import { useCreateMutation } from '../../hooks/useCreateMutation.ts';
-import { RentBookInterface } from '../../types/rent-book.interface.ts';
-import { useQueryClient } from '@tanstack/react-query';
+import { ButtonRent } from '../ButtonRent/ButtonRent.tsx';
 
 export const BookOne = () => {
   const params = useParams<{ slug: string }>();
-  const [modal, contextHolder] = useModal();
-  const [messageApi, contextHolder2] = message.useMessage();
 
   const { user } = useUserLoginStore();
 
   const { data } = useGetQuery<BookInterface>(`books/${params.slug}`);
 
-  const { mutate } = useCreateMutation<BookInterface, RentBookInterface, never>(
-    `books/${params.slug}/rent`
-  );
-
-  const queryClient = useQueryClient();
-
   if (!data) {
     return <div>Loading...</div>;
   }
-
-  const onConfirm = () => {
-    mutate(
-      {
-        bookId: data.id,
-      },
-      {
-        onSuccess: (bookBe) => {
-          // aktualizujemy dane, że już jest jedna mniej.
-
-          queryClient.setQueryData<BookInterface[]>(['books'], (oldData) =>
-            [...(oldData || [])].map((book) =>
-              book.id === bookBe.id ? bookBe : book
-            )
-          );
-
-          queryClient.setQueryData<BookInterface>(
-            ['books', params.slug],
-            () => bookBe
-          );
-
-          messageApi.success(`Książka ${data.title} została wypożyczona`);
-        },
-      }
-    );
-  };
-
-  const confirm = () => {
-    modal.confirm({
-      title: 'Potwierdź wypożyczenie',
-      icon: <ExclamationCircleOutlined />,
-      content: (
-        <div className={'modal-content'}>
-          <p>
-            Czy potwierdzasz wypożyczenie książki na 14 dni do dnia{' '}
-            {moment().add(14, 'days').format('YYYY-MM-DD')}?
-          </p>
-          <p>
-            Późniejszy zwrot może wiązać się z naliczeniem dodatkowej opłaty
-            zgodnie z obowiązującym regulaminem biblioteki.
-          </p>
-        </div>
-      ),
-      onOk: onConfirm,
-      okText: 'Potwierdzam',
-      cancelText: 'Rezygnuję',
-    });
-  };
 
   const items: DescriptionsProps['items'] = [
     {
@@ -124,13 +63,7 @@ export const BookOne = () => {
         <div className={'book-description'}>{data.description}</div>
         <div className={'description'}>
           <div className={'button-rent-container'}>
-            <Button
-              className={'button-rent'}
-              disabled={!user || data.count === 0}
-              onClick={confirm}
-            >
-              {data.count === 0 ? 'Brak na stanie' : 'Wypożycz książkę!'}
-            </Button>
+            <ButtonRent book={data} size={'large'} />
             <div
               style={{ display: data.count > 0 && !user ? undefined : 'none' }}
               className={'text-button-rent-description'}
@@ -162,8 +95,6 @@ export const BookOne = () => {
           />
         </div>
       </div>
-      {contextHolder}
-      {contextHolder2}
     </Content>
   );
 };
