@@ -13,6 +13,7 @@ import { Profile } from './components/Profile/Profile.tsx';
 import { AccountRemoved } from './components/AccountRemoved/AccountRemoved.tsx';
 import { AdminRents } from './components/adminComponents/AdminRents/AdminRents.tsx';
 import { AdminLogs } from './components/adminComponents/AdminLogs/AdminLogs.tsx';
+import { Stats } from './components/Stats/Stats.tsx';
 
 const systemPrefersDark = window.matchMedia(
   '(prefers-color-scheme: dark)'
@@ -44,6 +45,7 @@ export const Router = () => {
           <Route path={'rents'} element={<RentsHistory />} />
           <Route path={'profile'} element={<Profile />} />
           <Route path={'account-removed'} element={<AccountRemoved />} />
+          <Route path={'stats'} element={<Stats />} />
 
           <Route path={'admin/rents'} element={<AdminRents />} />
           <Route path={'admin/logs'} element={<AdminLogs />} />
