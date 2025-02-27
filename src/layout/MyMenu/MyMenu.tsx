@@ -35,14 +35,17 @@ export const MyMenu = () => {
           </Menu.Item>
         </>
       ) : (
-        <>
-          <Menu.Item key='home' onClick={() => navigate('/stats')}>
-            Statystyki
-          </Menu.Item>
-          <Menu.Item key='rents' onClick={() => navigate('/rents')}>
-            Moje wypożyczenia
-          </Menu.Item>
-        </>
+        user &&
+        user.rule === 'u0' && (
+          <>
+            <Menu.Item key='home' onClick={() => navigate('/stats')}>
+              Statystyki
+            </Menu.Item>
+            <Menu.Item key='rents' onClick={() => navigate('/rents')}>
+              Moje wypożyczenia
+            </Menu.Item>
+          </>
+        )
       )}
     </Menu>
   );
