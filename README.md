@@ -38,7 +38,7 @@ Do działania wymagany jest również backend, który jest osobnym repozytorium.
 1. Sklonuj repozytorium:
 
    ```bash
-   git clone https://github.com/your-username/LibraryManager-Front.git
+   git clone https://github.com/lajzowski/LibraryManager-Front.git
    ```
 
 2. Przejdź do katalogu projektu:
