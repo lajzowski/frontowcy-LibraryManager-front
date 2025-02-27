@@ -65,6 +65,16 @@ Do działania wymagany jest również backend, który jest osobnym repozytorium.
    npm install
    ```
 
+4. Ustaw adres serwera API w pliku tworząc plik `config.ts` w katalogu głównym projektu na podstawie pliku `config.example.ts`.
+
+Przykład zawartości `config.ts`
+   ```config.ts
+export const myConfig = {
+  /*Adres serwera api wraz z przedrostkiem http/https*/
+  api: 'https://your-api-address.com/',
+};
+   ```
+
 ## Rozwój
 
 Aby uruchomić aplikację w trybie deweloperskim, użyj:
