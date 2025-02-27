@@ -5,6 +5,18 @@
 LibraryManager to aplikacja do zarządzania biblioteką. Projekt został stworzony zgodnie ze specyfikacją.
 
 
+# DEMO
+
+> **DEMO:** [https://library.marcin.wroclaw.pl](https://library.marcin.wroclaw.pl)
+>
+> KLIENT<br/>
+> NR KARTY: 1111111111<br/>
+> HASŁO: testtest1234<br/><br/>
+> ADMIN<br/>
+> NR KARTY: 2222222222<br/>
+> HASŁO: testtest1234<br/>
+> 
+
 
 ## Funkcje
 
