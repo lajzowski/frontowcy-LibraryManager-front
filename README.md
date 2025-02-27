@@ -102,6 +102,11 @@ npm run format
 ```
 
 
+## Informacje Dodatkowe
+
+Projekt został stworzony wyłącznie na potrzeby kursu "Frontowcy" jako projekt edukacyjny. Nie odzwierciedla w pełni moich umiejętności programistycznych, a ze względu na uproszczoną formę nie jest przeznaczony do użytku w środowisku produkcyjnym.
+
+
 ## Licencja
 
 Ten projekt jest licencjonowany na zasadach licencji **MIT**. Szczegóły znajdziesz w pliku [LICENSE](./LICENSE).
